@@ -1,0 +1,227 @@
+<p-toast></p-toast>
+
+<p-panel header="ADMINISTRATOR TOOLS - USERS" [toggleable]="false" [style]="{'font-size':'12px'}">
+
+    <p-tabView>
+        <p-tabPanel header="Internal - ACTIVE DIRECTORY" [headerStyle]="{'font-size':'12px'}">
+          
+            <p-menubar [model]="menuActions" [style]="{'font-size':'14px', 'height': '43px'}">
+              
+            </p-menubar>
+            <p-table #dt [value]="allInternalUsers"
+                    styleClass="p-datatable-striped" 
+                    sortMode="multiple" 
+                    [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+                    [rowsPerPageOptions]="[10,25,50]"
+                    [globalFilterFields]="['fullName','email']"
+                    *ngIf="allInternalUsers">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex">
+                    <span class="p-input-icon-left p-ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 50px;"></th>
+                    <th pSortableColumn="fullName">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Full name
+                            <p-sortIcon field="fullName"></p-sortIcon>
+                            <p-columnFilter type="text" field="fullName" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="email">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                           Email
+                           <p-sortIcon field="email"></p-sortIcon>
+                            <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                           Role
+                    </th>
+                    <th>
+                        Department
+                    </th>
+                    <th style="text-align: center; width: 100px;">
+                         Inactive
+                    </th>
+                    <th style="width: 50px;"></th>
+                    
+                </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-user let-rowIndex="rowIndex">
+                <tr>
+                    <td>{{rowIndex + 1}}</td>
+                    <td>{{user.fullName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.roles[0].name}}</td>
+                    <td>{{user.departments[0].name}}</td>
+                    <td style="width:100px; text-align: center;">
+                        <p-checkbox [ngModel]="!user.isActive" [binary]="true" disabled></p-checkbox>
+                    </td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-pencil" tooltipPosition="top" pTooltip="Edit User" (click)="openEditDialog(user)"></button>
+                    </td>
+                </tr>
+                </ng-template>
+            </p-table>
+       
+
+        </p-tabPanel>
+        <p-tabPanel header="External - Supplier Profiles" [headerStyle]="{'font-size':'12px'}">
+            <p-table #dtB2C [value]="allExternalUsers"
+                    styleClass="p-datatable-striped" 
+                    sortMode="multiple" 
+                    [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+                    [rowsPerPageOptions]="[10,25,50]"
+                    [globalFilterFields]="['fullName','email']"
+                    *ngIf="allExternalUsers">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex">
+                    <span class="p-input-icon-left p-ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dtB2C.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 50px;"></th>
+                    <th pSortableColumn="fullName">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Full name
+                            <p-sortIcon field="fullName"></p-sortIcon>
+                            <p-columnFilter type="text" field="fullName" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="email">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                           Email
+                           <p-sortIcon field="email"></p-sortIcon>
+                            <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th style="text-align: center; width: 100px;">
+                         Inactive
+                    </th>
+                    <th style="width: 50px;"></th>
+                    <th style="width: 50px;"></th>
+                </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-user let-rowIndex="rowIndex">
+                <tr>
+                    <td>{{rowIndex + 1}}</td>
+                    <td>{{user.fullName}}</td>
+                    <td>{{user.email}}</td>
+                    <td style="width:100px; text-align: center;">
+                        <p-checkbox [ngModel]="!user.isActive" [binary]="true" disabled></p-checkbox>
+                    </td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-pencil" tooltipPosition="top" pTooltip="Edit User" (click)="openEditDialog(user)"></button>
+                    </td>
+                    <td>
+                        <button pButton  (click)="showSupplierDetails(user)" pButton icon="fa fa-user fa-fw" class="ui-button-info" pTooltip="Linked Suppliers"  tooltipPosition="top" ></button>
+                    </td>
+                </tr>
+                </ng-template>
+            </p-table>
+
+        </p-tabPanel>
+    </p-tabView>
+
+</p-panel>
+
+<p-dialog [(visible)]="showDialog" [modal]="true" [style]="{width: '50vw'}" [maximizable]="false" [resizable]="false" *ngIf="userForm">
+    <ng-template pTemplate="header">
+       {{dialogHeader}}
+    </ng-template>
+    <form novalidate [formGroup]="userForm" >
+        <div class="p-fluid">
+            <div class="p-field p-grid">
+                <label for="fullNameId" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Full name</label>
+                <div class="p-col-12 p-md-10" *ngIf="!selectedUser">
+                    <p-autoComplete 
+                                    appendTo="body"  
+                                    formControlName="globalUser" 
+                                    [style]="{'width':'100%'}" 
+                                    name="id" 
+                                    [suggestions]="searchResult" 
+                                    (completeMethod)="searchUser($event)" 
+                                    field="fullName" 
+                                    [size]="20"
+                                    placeholder="Find User (type 4 letters)" 
+                                    [minLength]="4" 
+                                    [forceSelection]="true" 
+                                    [showTransitionOptions]="'0ms'" 
+                                    [hideTransitionOptions]="'0ms'"
+                                    >
+                    </p-autoComplete>
+                </div>
+                <div class="p-col-12 p-md-10" *ngIf="selectedUser">
+                    <input 
+                            type="text" 
+                            pInputText 
+                            formControlName="fullName"
+                            [disabled] = "true"
+                            />
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="roleId" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Role</label>
+                <div class="p-col-12 p-md-10">
+                    <p-dropdown 
+                            id="roleId"
+                            [style]="{'width':'100%'}"
+                            [options]="roles" 
+                            formControlName="roleId" 
+                            optionLabel="name"
+                            optionValue="id"
+                            [showClear]="true" 
+                            placeholder="Select a Role"
+                            appendTo="body"
+                            [disabled] = "selectedUser?.isB2C"
+                            >
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="departmentId" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Department</label>
+                <div class="p-col-12 p-md-10">
+                    <p-dropdown 
+                            id="departmentId"
+                            [style]="{'width':'100%'}"
+                            [options]="departments" 
+                            formControlName="departmentId" 
+                            optionLabel="name"
+                            optionValue="id"
+                            [showClear]="true" 
+                            placeholder="Select a Department"
+                            appendTo="body"
+                            [disabled] = "selectedUser?.isB2C"
+                            >
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="inactiveId" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Inactive</label>
+                <div class="p-col-12 p-md-10">
+                    <p-checkbox 
+                            id="inactiveId"
+                            [binary]="true"
+                            formControlName="inActive">
+                    </p-checkbox>
+                </div>
+            </div>
+        </div>
+    </form>
+    <p-footer>
+        <button pButton pTooltip="Save"  tooltipPosition="top" class="p-button-info" icon="pi pi-check" label="Save" [disabled]="!userForm.valid" (click)="saveOrCreateUser()"></button>
+        <button pButton pTooltip="Cancel"  tooltipPosition="top" class="p-button-danger" icon="fa fa-times" label="Cancel" (click)="closeDialog()"></button>
+    </p-footer>
+</p-dialog>

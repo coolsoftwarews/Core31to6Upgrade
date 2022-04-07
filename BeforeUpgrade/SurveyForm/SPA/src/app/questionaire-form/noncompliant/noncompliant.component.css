@@ -1,0 +1,8 @@
+/* Of course, you need to use a different selector,
+   since you don't want to apply these styles to all elements with this class */
+   .center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   
