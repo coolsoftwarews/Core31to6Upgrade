@@ -1,0 +1,17 @@
+.compliance-badge.status-true{
+    background: #c8e6c9;
+    color: #256029;
+}
+.compliance-badge.status-false{
+    background-color: #ffcdd2;
+    color: #c63737;
+}
+.compliance-badge{
+    border-radius: 2px;
+    padding: .5em .5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+    width: 100px;
+}

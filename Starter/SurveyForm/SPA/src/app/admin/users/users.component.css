@@ -1,0 +1,12 @@
+.normal-car {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11px !important;
+}
+
+.old-car {
+    background-color: rgb(34,139,34) !important;
+    color: #ffffff !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500 ;
+    font-size: 11px !important;
+}

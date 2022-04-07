@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{A1B50649-31E9-42D6-A119-DB6133C92C11}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SPA", "SPA\", "{DBDADD04-7239-4E6F-A833-64D81AF2034D}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50813"
+		Debug.AspNetCompiler.PhysicalPath = "SPA\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50813\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50813"
+		Release.AspNetCompiler.PhysicalPath = "SPA\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50813\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50813"
+		SlnRelativePath = "SPA\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{D023D42E-14E2-48E2-B10E-4FB3C53F55AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{28B4CBB4-DA33-46E8-A0EE-9E7F4897C030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Core", "Survey.Core\Survey.Core.csproj", "{20548DF9-B5C0-4689-A34E-4A8B4388298D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Data", "Survey.Data\Survey.Data.csproj", "{EDD4E4C0-03EE-4CC8-91B1-0EEDDC0C60A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Services", "Survey.Services\Survey.Services.csproj", "{28402EF2-9FA8-41EE-A246-00AF63DDC275}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1B50649-31E9-42D6-A119-DB6133C92C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B50649-31E9-42D6-A119-DB6133C92C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B50649-31E9-42D6-A119-DB6133C92C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B50649-31E9-42D6-A119-DB6133C92C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBDADD04-7239-4E6F-A833-64D81AF2034D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDADD04-7239-4E6F-A833-64D81AF2034D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDADD04-7239-4E6F-A833-64D81AF2034D}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{20548DF9-B5C0-4689-A34E-4A8B4388298D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20548DF9-B5C0-4689-A34E-4A8B4388298D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20548DF9-B5C0-4689-A34E-4A8B4388298D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20548DF9-B5C0-4689-A34E-4A8B4388298D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD4E4C0-03EE-4CC8-91B1-0EEDDC0C60A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD4E4C0-03EE-4CC8-91B1-0EEDDC0C60A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD4E4C0-03EE-4CC8-91B1-0EEDDC0C60A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD4E4C0-03EE-4CC8-91B1-0EEDDC0C60A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28402EF2-9FA8-41EE-A246-00AF63DDC275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28402EF2-9FA8-41EE-A246-00AF63DDC275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28402EF2-9FA8-41EE-A246-00AF63DDC275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28402EF2-9FA8-41EE-A246-00AF63DDC275}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1B50649-31E9-42D6-A119-DB6133C92C11} = {28B4CBB4-DA33-46E8-A0EE-9E7F4897C030}
+		{DBDADD04-7239-4E6F-A833-64D81AF2034D} = {28B4CBB4-DA33-46E8-A0EE-9E7F4897C030}
+		{20548DF9-B5C0-4689-A34E-4A8B4388298D} = {D023D42E-14E2-48E2-B10E-4FB3C53F55AF}
+		{EDD4E4C0-03EE-4CC8-91B1-0EEDDC0C60A1} = {D023D42E-14E2-48E2-B10E-4FB3C53F55AF}
+		{28402EF2-9FA8-41EE-A246-00AF63DDC275} = {D023D42E-14E2-48E2-B10E-4FB3C53F55AF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C7DF6A4-FE1B-47E1-A406-5716DF255DAA}
+	EndGlobalSection
+EndGlobal

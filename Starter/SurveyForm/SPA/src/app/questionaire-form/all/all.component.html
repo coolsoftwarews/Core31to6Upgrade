@@ -1,0 +1,43 @@
+<div class="p-fluid">
+    <div class="p-field p-grid">
+        <label style="font-weight: bold;" for="fullNameId" class="p-col-2 p-mb-2 p-md-2 p-mb-md-0">Search by full name:</label>
+        <div class="p-col-6 p-md-6">
+            <p-autoComplete 
+                            appendTo="body"  
+                            [style]="{'width':'100%'}" 
+                            name="id" 
+                            [suggestions]="searchResult" 
+                            (completeMethod)="searchUser($event)" 
+                            (onSelect)="onSelectUser($event)"
+                            
+                            [size]="20"
+                            placeholder="Full name" 
+                            [minLength]="0" 
+                            [forceSelection]="true" 
+                            [showTransitionOptions]="'0ms'" 
+                            [hideTransitionOptions]="'0ms'"
+                            >
+            </p-autoComplete>
+        </div>
+    </div>
+</div>
+<br />
+
+<p-table [value]="_allQuestionaireForms" [paginator]="true" [rows]="25" [showCurrentPageReport]="true" 
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[25,50,100]">>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 60%;" pSortableColumn="fullName">Full name <p-sortIcon field="fullName"></p-sortIcon></th>
+            <th style="width: 20%;">Survey Completed</th>
+            <th style="width: 20%;" pSortableColumn="dateCreated">Date Completed <p-sortIcon field="dateCreated"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-questionaireForm>
+        <tr>
+            <td>{{questionaireForm.fullName}}</td>
+            <td><span [class]="'compliance-badge status-true'">Yes</span></td>
+            <td>{{questionaireForm.dateCreated | date: "yyyy-MM-dd HH:mm:ss"}}</td>
+
+        </tr>
+    </ng-template>
+</p-table>

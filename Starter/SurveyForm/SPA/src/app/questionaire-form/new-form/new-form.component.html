@@ -1,0 +1,98 @@
+<ng-container *ngIf="_newForm && _newFormBuilder">
+    <span>{{errorMessage}}</span>
+    <div style="background-color: #e9ecef;padding: 5px; margin-top: -5px; margin-bottom: 10px; border-radius: 5px;"><p><b>Dear Shopper</b></p>
+          <p>
+        We thank you for taking the time to complete this Survey</p></div>
+    <form novalidate [formGroup]="_newFormBuilder" *ngIf="_newForm">
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label"
+            for="venueId">Shopping Mall:</label>
+            <div class="col-md-4">
+                <p-dropdown 
+                            id="venueId"
+                            [style]="{'width':'100%'}"
+                            [options]="_newForm.venueLookupList" 
+                            formControlName="venueId" 
+                            optionLabel="name"
+                            optionValue="id"
+                            >
+                </p-dropdown>
+            </div>
+
+            <div class="col-md-6">
+            </div>
+        </div>
+       <div class="form-group row mb-2">
+               <label class="col-md-2 col-form-label"
+                   for="firstNameId">First Name: <b class="mandatory">*</b></label>
+               <div class="col-md-4">
+               <input pInputText  class="form-control"
+                       id="firstNameId"
+                       type="text"
+                       placeholder="First Name (required)"
+                       formControlName="firstName" 
+                       [ngClass]="{'is-invalid': _displayMessage.firstName }"
+                       />
+               <span class="invalid-feedback">{{_displayMessage.firstName}}</span>
+               </div>
+               <div class="col-md-6">
+                </div> 
+       </div>
+       <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label"
+            for="lastNameId">Last Name: <b class="mandatory">*</b></label>
+            <div class="col-md-4">
+            <input pInputText  class="form-control"
+                    id="lastNameId"
+                    type="text"
+                    placeholder="Last Name (required)"
+                    formControlName="lastName"
+                    [ngClass]="{'is-invalid': _displayMessage.lastName }"
+                    />
+            <span class="invalid-feedback">{{_displayMessage.lastName}}</span>
+            </div>
+            <div class="col-md-6">
+            </div> 
+        
+        </div>
+      
+   </form>
+<p-table [value]="_newForm.questionsAndAnswers">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 10%;">#</th>
+            <th>Question</th>
+            <th style="width: 20%;">No/Yes</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-qa>
+        <tr>
+            <td>{{qa.questionId}}</td>
+            <td>{{qa.question}}</td>
+            <td pEditableColumn>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <p-inputSwitch [(ngModel)]="qa.isTrue"></p-inputSwitch>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        <p-inputSwitch [(ngModel)]="qa.isTrue"></p-inputSwitch>
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<button pButton type="button" 
+                label="Submit" 
+                icon="pi pi-sign-in" 
+                class="p-button-success"
+                iconPos="right" 
+                style="width: 100%;"
+                [disabled]="!_isFormValid"
+                (click) = "confirm()"
+                >
+            </button>
+
+</ng-container>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
